@@ -1,10 +1,13 @@
 
+using System;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.EntityFrameworkCore;
+using Pomelo.EntityFrameworkCore.MySql.Storage;
+using Pomelo.EntityFrameworkCore.MySql.Infrastructure;
 using TodoApi.Models;
 
 namespace TodoApi
@@ -21,7 +24,14 @@ namespace TodoApi
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
-            services.AddDbContext<TodoContext>(opt => opt.UseInMemoryDatabase("TodoList"));
+            services
+                .AddDbContext<TodoDbContext>(options => options
+                    // To protect potentially sensitive information in your connection string, you should move it out of source code. See http://go.microsoft.com/fwlink/?LinkId=723263 for guidance on storing connection strings.
+                    .UseMySql(Configuration.GetConnectionString("API_DATABASE_CONNECTION_STRING"),
+                        mysqlOptions =>  mysqlOptions
+                            .ServerVersion(new ServerVersion(new Version(10, 4, 15), ServerType.MariaDb)))
+                );
+            
             services.AddControllers();
         }
 

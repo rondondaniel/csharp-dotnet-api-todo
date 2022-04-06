@@ -11,9 +11,9 @@ namespace TodoApi.Controllers
     [ApiController]
     public class TodoItemsController : ControllerBase
     {
-        private readonly TodoContext _context;
+        private readonly TodoDbContext _context;
 
-        public TodoItemsController(TodoContext context)
+        public TodoItemsController(TodoDbContext context)
         {
             _context = context;
         }
@@ -29,7 +29,7 @@ namespace TodoApi.Controllers
 
         // GET: api/TodoItems/5
         [HttpGet("{id}")]
-        public async Task<ActionResult<TodoItemDTO>> GetTodoItem(long id)
+        public async Task<ActionResult<TodoItemDTO>> GetTodoItem(int id)
         {
             var todoItem = await _context.TodoItems.FindAsync(id);
 
@@ -42,10 +42,10 @@ namespace TodoApi.Controllers
         }
 
         // PUT: api/TodoItems/5
-        // To protect from overposting attacks, enable the specific properties you want to bind to, for
+        // To protect from overposting attacks, DTO approach enables the specific properties wanted to bind to
         // more details, see https://go.microsoft.com/fwlink/?linkid=2123754.
         [HttpPut("{id}")]
-        public async Task<IActionResult> UpdateTodoItem(long id, TodoItemDTO todoItemDTO)
+        public async Task<IActionResult> UpdateTodoItem(int id, TodoItemDTO todoItemDTO)
         {
             if (id != todoItemDTO.Id)
             {
