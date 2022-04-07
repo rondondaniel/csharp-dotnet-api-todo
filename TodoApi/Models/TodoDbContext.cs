@@ -17,15 +17,6 @@ namespace TodoApi.Models
 
         public virtual DbSet<TodoItem> TodoItems { get; set; }
 
-        protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
-        {
-            if (!optionsBuilder.IsConfigured)
-            {
-                // To protect potentially sensitive information in your connection string, you should move it out of source code. See http://go.microsoft.com/fwlink/?LinkId=723263 for guidance on storing connection strings.
-                optionsBuilder.UseMySql(Configuration.GetConnectionString("API_DATABASE_CONNECTION_STRING"), x => x.ServerVersion("10.4.15-mariadb"));
-            }
-        }
-
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             modelBuilder.Entity<TodoItem>(entity =>

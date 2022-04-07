@@ -27,7 +27,8 @@ namespace TodoApi
             services
                 .AddDbContext<TodoDbContext>(options => options
                     // To protect potentially sensitive information in your connection string, you should move it out of source code. See http://go.microsoft.com/fwlink/?LinkId=723263 for guidance on storing connection strings.
-                    .UseMySql(Configuration.GetConnectionString("API_DATABASE_CONNECTION_STRING"),
+                    .UseMySql(
+                        Configuration.GetValue<string>("APP_DATABASE_CONNECTION_STRING"),
                         mysqlOptions =>  mysqlOptions
                             .ServerVersion(new ServerVersion(new Version(10, 4, 15), ServerType.MariaDb)))
                 );
