@@ -6,7 +6,7 @@
 ## Docker
 ### To build docker container
 Use:
-`docker build -t dronemodel/todoapi:latest .`
+`docker build dronemodel/todoapi:latest .`
 ### To run docker container
 Use:
 `docker run -t --rm -p 5001:80 --name todoapi dronemodel/todoapi:latest`
