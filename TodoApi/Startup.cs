@@ -30,7 +30,7 @@ namespace TodoApi
                     .UseMySql(
                         Configuration.GetValue<string>("APP_DATABASE_CONNECTION_STRING"),
                         mysqlOptions =>  mysqlOptions
-                            .ServerVersion(new ServerVersion(new Version(10, 4, 15), ServerType.MariaDb)))
+                            .ServerVersion(new ServerVersion(new Version(10, 4, 18), ServerType.MariaDb)))
                 );
             
             services.AddControllers();
