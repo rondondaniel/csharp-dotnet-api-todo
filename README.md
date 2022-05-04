@@ -10,11 +10,7 @@
 ### To build docker container
 
 Use:
-<<<<<<< HEAD
-`docker build dronemodel/todoapi:latest .`
-=======
 `docker build -t dronemodel/todoapi:latest .`
->>>>>>> develop
 
 ### To run docker container
 
@@ -23,8 +19,4 @@ Use:
 
 ### Launch Mariadb database
 
-<<<<<<< HEAD
-`$ docker run --name mariadbtest -e MYSQL_ROOT_PASSWORD=mypass -p 3306:3306  -d docker.io/library/mariadb:10.4.15`
-=======
 `$ docker run --name mariadbtest -e MYSQL_ROOT_PASSWORD=<Your_Password_Here> -p 3306:3306  -d docker.io/library/mariadb:10.4.18`
->>>>>>> develop
