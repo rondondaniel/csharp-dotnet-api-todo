@@ -35,6 +35,7 @@ bld/
 [Oo]bj/
 [Oo]ut/
 netcoreapp3.1/
+copilot/
 msbuild.log
 msbuild.err
 msbuild.wrn
